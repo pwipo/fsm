@@ -5,8 +5,8 @@ import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public class TransitionBuilder {
-    private String name;
-    private Object sourceState;
+    private String name = null;
+    private Object sourceState = null;
     private String event = null;
     private Pattern eventPattern = null;
     private Predicate<Object> eventChecker = null;
@@ -14,9 +14,9 @@ public class TransitionBuilder {
     private BiFunction<Object, Transition, TransitionResult> eventHandlerDirect = null;
     private Object targetState = null;
     private Object targetEvent = null;
-    private Object errorState;
-    private Object errorEvent;
-    private BiFunction<Object, Object, Object> eventTransformer;
+    private Object errorState = null;
+    private Object errorEvent = null;
+    private BiFunction<Object, Object, Object> eventTransformer = null;
 
     public TransitionBuilder setName(String name) {
         this.name = name;
