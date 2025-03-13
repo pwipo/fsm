@@ -1,8 +1,6 @@
 package ru.seits.utils.fsm;
 
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.*;
 
 /**
@@ -23,7 +21,7 @@ public class FiniteStateMachineImpl implements FiniteStateMachine {
     // private final List<Object> currentExecuteEvents;
 
     public FiniteStateMachineImpl(final Object initialState, final Set<Object> finalStates, final List<Transition> transitions) {
-        if (initialState == null || (initialState instanceof String && StringUtils.isBlank((String) initialState)))
+        if (initialState == null || (initialState instanceof String && Utils.isBlank((String) initialState)))
             throw new IllegalArgumentException("initialState");
         Objects.requireNonNull(finalStates);
         Objects.requireNonNull(transitions);
@@ -35,7 +33,7 @@ public class FiniteStateMachineImpl implements FiniteStateMachine {
         lastException = null;
 
         finalStates.forEach(finalState -> {
-            if (finalState == null || (finalState instanceof String && StringUtils.isBlank((String) finalState)))
+            if (finalState == null || (finalState instanceof String && Utils.isBlank((String) finalState)))
                 throw new IllegalArgumentException("finalState");
             this.finalStates.add(finalState);
         });

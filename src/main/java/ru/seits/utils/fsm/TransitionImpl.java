@@ -1,8 +1,6 @@
 package ru.seits.utils.fsm;
 
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
@@ -72,7 +70,7 @@ public class TransitionImpl implements Transition {
     }
 
     public void setSourceState(Object sourceState) {
-        if (sourceState == null || (sourceState instanceof String && StringUtils.isBlank((String) sourceState)))
+        if (sourceState == null || (sourceState instanceof String && Utils.isBlank((String) sourceState)))
             throw new IllegalArgumentException("sourceState");
         this.sourceState = sourceState;
     }
@@ -83,7 +81,7 @@ public class TransitionImpl implements Transition {
     }
 
     public void setTargetState(Object targetState) {
-        if (/*(targetState == null && eventHandlerDirect == null) || */(targetState instanceof String && StringUtils.isBlank((String) targetState)))
+        if (/*(targetState == null && eventHandlerDirect == null) || */(targetState instanceof String && Utils.isBlank((String) targetState)))
             throw new IllegalArgumentException("targetState");
         this.targetState = targetState;
     }
@@ -112,7 +110,7 @@ public class TransitionImpl implements Transition {
     }
 
     public void setErrorState(Object errorState) {
-        if (errorState == null || (errorState instanceof String && StringUtils.isBlank((String) errorState)))
+        if (errorState == null || (errorState instanceof String && Utils.isBlank((String) errorState)))
             throw new IllegalArgumentException("errorState");
         this.errorState = errorState;
     }
@@ -143,13 +141,13 @@ public class TransitionImpl implements Transition {
     public void setEvent(String event) {
         // Objects.requireNonNull(event);
         this.event = event;
-        if (StringUtils.isBlank(getName()))
+        if (Utils.isBlank(getName()))
             setName(event);
     }
 
     public void setEventPattern(Pattern eventPattern) {
         this.eventPattern = eventPattern;
-        if (eventPattern != null && StringUtils.isBlank(getName()))
+        if (eventPattern != null && Utils.isBlank(getName()))
             setName(eventPattern.pattern());
     }
 
